@@ -4,13 +4,13 @@
 
 which masscan &> /dev/null
 if [[ $? -ne 0 ]]; then
-  echo "mascan not found: apt-get install masscan ?"
+  echo "mascan not found: apt install masscan ?"
   exit 1 
 fi
 
 which nmap &> /dev/null
 if [[ $? -ne 0 ]]; then
-  echo "nmap not found: apt-get install nmap ?"
+  echo "nmap not found: apt install nmap ?"
   exit 1 
 fi
 
