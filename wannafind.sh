@@ -2,6 +2,18 @@
 
 # @author valarauco
 
+which masscan &> /dev/null
+if [[ $? -ne 0 ]]; then
+  echo "mascan not found: apt-get install masscan ?"
+  exit 1 
+fi
+
+which nmap &> /dev/null
+if [[ $? -ne 0 ]]; then
+  echo "nmap not found: apt-get install nmap ?"
+  exit 1 
+fi
+
 subnet=$1
 tmp_subnet_list=$(mktemp)
 script_file="/usr/share/nmap/scripts/smb-vuln-ms17-010.nse"
@@ -19,3 +31,4 @@ nmap -Pn -oA results -p445 --script smb-vuln-ms17-010 -iL $tmp_subnet_list | gre
 rm $tmp_subnet_list
 
 exit 0
+
